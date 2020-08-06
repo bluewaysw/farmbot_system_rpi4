@@ -3,7 +3,6 @@ defmodule NervesSystemRpi4.MixProject do
 
   @app :farmbot_system_rpi4
   @github_organization "bluewaysw"
-  @source_url "https://github.com/#{@github_organization}/#{@app}"
   @version Path.join(__DIR__, "VERSION")
            |> File.read!()
            |> String.trim()
@@ -19,12 +18,7 @@ defmodule NervesSystemRpi4.MixProject do
       package: package(),
       deps: deps(),
       aliases: [loadconfig: [&bootstrap/1], docs: ["docs", &copy_images/1]],
-      docs: docs(),
-      preferred_cli_env: %{
-        docs: :docs,
-        "hex.build": :docs,
-        "hex.publish": :docs
-      }
+      docs: [extras: ["README.md"], main: "readme"]
     ]
   end
 
@@ -56,10 +50,10 @@ defmodule NervesSystemRpi4.MixProject do
   defp deps do
     [
       {:nerves, "~> 1.5.4 or ~> 1.6.0", runtime: false},
-      {:nerves_system_br, "1.12.3", runtime: false},
+      {:nerves_system_br, "1.12.1", runtime: false},
       {:nerves_toolchain_arm_unknown_linux_gnueabihf, "~> 1.3.0", runtime: false},
       {:nerves_system_linter, "~> 0.4", only: [:dev, :test], runtime: false},
-      {:ex_doc, "~> 0.22", only: :docs, runtime: false}
+      {:ex_doc, "~> 0.18", only: [:dev, :test], runtime: false}
     ]
   end
 
@@ -69,21 +63,11 @@ defmodule NervesSystemRpi4.MixProject do
     """
   end
 
-  defp docs do
-    [
-      extras: ["README.md", "CHANGELOG.md"],
-      main: "readme",
-      source_ref: "v#{@version}",
-      source_url: @source_url,
-      skip_undefined_reference_warnings_on: ["CHANGELOG.md"]
-    ]
-  end
-
   defp package do
     [
       files: package_files(),
       licenses: ["Apache 2.0"],
-      links: %{"GitHub" => @source_url}
+      links: %{"GitHub" => "https://github.com/#{@github_organization}/#{@app}"}
     ]
   end
 
