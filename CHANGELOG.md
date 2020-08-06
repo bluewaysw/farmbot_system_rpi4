@@ -1,5 +1,75 @@
 # Changelog
 
+## v1.12.1
+
+* Fixes
+  * Remove `nerves_system_linter` from hex package. This fixes mix dependency
+    errors in projects that reference systems with different
+    `nerves_system_linter` dependency specs.
+
+## v1.12.0
+
+This release updates the system to use Buildroot 2020.05 and Erlang/OTP 23.
+Please see the respective release notes for updates and deprecations in both
+projects for changes that may affect your application.
+
+* New features
+  * Support the Raspberry Pi Sense HAT's joystick
+  * Enable WiFi mesh support in the 802.11 stack
+
+* Updated dependencies
+  * [nerves_system_br v1.12.0](https://github.com/nerves-project/nerves_system_br/releases/tag/v1.12.0)
+  * [Erlang/OTP 23.0.2](https://erlang.org/download/OTP-23.0.2.README)
+  * [Linux 4.19.118 (Raspberry Pi 1.2020601 tag)](https://github.com/raspberrypi/linux/tree/raspberrypi-kernel_1.20200601-1)
+  * [Raspberry Pi firmware 1.2020601](https://github.com/raspberrypi/firmware/tree/1.20200601)
+
+## v1.11.3
+
+* Updated dependencies
+  * [nerves_system_br v1.11.4](https://github.com/nerves-project/nerves_system_br/releases/tag/v1.11.4)
+  * Erlang 22.3.4.1
+  * fwup 1.7.0
+
+## v1.11.2
+
+* Updated dependencies
+  * [nerves_system_br v1.11.2](https://github.com/nerves-project/nerves_system_br/releases/tag/v1.11.2)
+  * Erlang 22.3.1
+  * erlinit 1.7.0 - tty initialization support
+  * fwup 1.6.0 - xdelta3/VCDIFF patch support
+  * Enable unixodbc so that Erlang's odbc application can be used in projects
+
+## v1.11.1
+
+This release updates the Linux configuration to match changes in the latest
+Raspberry Pi kernel configuration for the Raspberry Pi 4. If you have made
+a custom system, the following kernel configuration changes may affect you:
+
+```
++CONFIG_CPUFREQ_DT=y
++CONFIG_ARM_RASPBERRYPI_CPUFREQ=y
++# CONFIG_ARM_BCM2835_CPUFREQ is not set
++CONFIG_RPIVID_MEM=m
++CONFIG_REGULATOR_FIXED_VOLTAGE=y
++CONFIG_DRM_V3D=m
++CONFIG_CLK_RASPBERRYPI=y
+```
+
+* Bug fixes
+  * Fixed regulator kernel configuration setting that prevented booting
+    sometimes (this was a "not sure how this ever worked" kind of bug)
+
+## v1.11.0
+
+This release updates Buildroot to 2020.02 and upgrades gcc from 8.3 to 9.2.
+While this is a minor version bump due to the Buildroot release update, barring
+advanced usage of Nerves, this is a straightforward update from v1.10.2.
+
+* Updated dependencies
+  * [nerves_system_br v1.11.0](https://github.com/nerves-project/nerves_system_br/releases/tag/v1.11.0)
+  * linux 4.19.97 (raspberrypi-kernel_1.20200212-1 tag)
+  * Erlang 22.2.8
+
 ## v1.10.2
 
 * Updated dependencies
