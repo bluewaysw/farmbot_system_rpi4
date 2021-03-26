@@ -41,7 +41,7 @@ CONFIG_UACCESS_WITH_MEMCPY=y
 CONFIG_SECCOMP=y
 CONFIG_ZBOOT_ROM_TEXT=0x0
 CONFIG_ZBOOT_ROM_BSS=0x0
-CONFIG_CMDLINE="console=ttyAMA0,115200 kgdboc=ttyAMA0,115200 root=/dev/mmcblk0p2 rootfstype=ext4 rootwait"
+CONFIG_CMDLINE="console=ttyAMA0,115200 kgdboc=ttyAMA0,115200 root=/dev/mmcblk0p2 rootfstype=f2fs rootwait"
 # CONFIG_EFI is not set
 # CONFIG_SUSPEND is not set
 CONFIG_PM=y
